@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.jumbotron {
+    background-image: url(../assets/img/168.jpg);
+    background-size: cover;
+    height: 640px;
+} 
+
+.jumbotron h1, .jumbotron p {
+    text-align: center;
+    font-weight: 700;
+    font-family: sans-serif;
+    color: coral;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.produk {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.produk td,.produk th{
+    padding: 12px 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+}
+
+.produk th {
+    background-color: coral;
+    color: #ffffff;
+}
+
+.produk tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
