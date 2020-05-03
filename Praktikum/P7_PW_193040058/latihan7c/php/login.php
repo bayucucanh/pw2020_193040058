@@ -8,6 +8,21 @@ if (isset($_SESSION['username'])) {
   exit;
 }
 
+// cek cookie
+if (isset($_COOKIE['username']) && isset($_COOKIE['hash'])) {
+  $username = $_COOKIE['username'];
+  $hash = $_COOKIE['hash'];
+
+  $result = mysqli_query(koneksi(), "SELECT * FROM user WHERE username = '$username'");
+  $row = mysqli_fetch_assoc($result);
+
+  if ($hash ===  hash('sha256', $row['id'], false)) {
+    $_SESSION['username'] = $_POST['username'];
+    header("Location: admin.php");
+    exit;
+  }
+}
+
 // jika tombol ditekan
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
@@ -15,11 +30,17 @@ if (isset($_POST['submit'])) {
   $cek_user = mysqli_query(koneksi(), "SELECT * FROM user WHERE username = '$username'");
   if (mysqli_num_rows($cek_user) > 0) {
     $row = mysqli_fetch_assoc($cek_user);
-    if ($password == $row['password']) {
+    if (password_verify($password, $row['password'])) {
       $_SESSION['username'] = $_POST['username'];
-      $_SESSION['hash'] = $row['id'];
+      $_SESSION['hash'] = hash('sha256', $row['id'], false);
+
+      if (isset($_POST['remember'])) {
+        setcookie('username', $row['username'], time() + 60 * 60 * 24);
+        hash('sha256', $row['id']);
+        setcookie('hash', $hash, time() + 60 * 60 * 24);
+      }
     }
-    if ($row['id'] == $_SESSION['hash']) {
+    if (hash('sha256', $row['id']) == $_SESSION['hash']) {
       header("Location: admin.php");
       die;
     }
@@ -72,8 +93,11 @@ if (isset($_POST['submit'])) {
             <label for="password">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Masukan Password">
           </div>
+          <input type="checkbox" name="remember">
+          <label for="remember">Remember</label>
           <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </form>
+        <p>Belum mempuyai akun ? Registrasi <a href="registrasi.php">disini</a></p>
       </div>
     </div>
   </div>

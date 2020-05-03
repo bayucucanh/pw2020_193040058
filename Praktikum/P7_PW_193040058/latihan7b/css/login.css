@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("../assets/img/bg.png");
+  background-size: cover;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.txt-left {
+  font-size: 40px;
+  color: coral;
+  margin-top: 250px;
+}
+
+p {
+  font-size: 17px;
+}
+
+.login {
+  font-size: 25px;
+  color:orange;
+  margin-top: 250px;
+  margin-left: 150px;
+  text-align: center;
+}
+.form-group {
+  margin-left: 150px;
+}
+
+form button {
+  margin-left: 150px;
+}

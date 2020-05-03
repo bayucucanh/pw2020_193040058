@@ -6,6 +6,12 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
+}
 require 'functions.php';
 
 // Mengambil id dari url
@@ -38,7 +44,7 @@ $book = query("SELECT * FROM book WHERE id = $id")[0];
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <img src="../assets/img/<?= $book["gambar"]; ?>" alt="" width="568px">
+                <img src="../assets/img/<?= $book["gambar"]; ?>" alt="" width="570px">
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-5 keterangan">
@@ -52,7 +58,6 @@ $book = query("SELECT * FROM book WHERE id = $id")[0];
             </div>
         </div>
     </div>
-
 
     <button class="tombol-kembali"><a href="../index.php">Kembali</a></button>
 
