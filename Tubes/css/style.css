@@ -1,0 +1,27 @@
+
+.produk {
+    width: 100%;
+}
+
+.produk td,.produk th{
+    padding: 12px 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.produk th {
+    background-color: #c3073f;
+}
+
+.produk tbody tr:nth-child(odd) {
+    background-color: #950740;;
+}
+
+.produk tbody tr:nth-child(even) {
+    background-color: #c3073f;
+}
+
+
+.search-box {
+    width: 30%;
+}
