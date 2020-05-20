@@ -54,6 +54,9 @@ if (isset($_GET['cari'])) {
                 <li class="nav-item">
                     <a style="color: 1a1a1d" class="nav-link" href="php/logout.php"><img src="assets/icon/logout-icon.png" width="30"> Logout </a>
                 </li>
+                <li class="nav-item">
+                    <a style="color: 1a1a1d" class="nav-link" href="php/cart.php"><img src="assets/icon/cart-icon.png" width="30"> Cart </a>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" name="keyword" autofocus username placeholder="Search" aria-label="Search">
