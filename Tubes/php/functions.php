@@ -31,7 +31,7 @@ function tambah($data)
     $penerbit = htmlspecialchars($data['penerbit']);
     $deskripsi = htmlspecialchars($data['deskripsi']);
     $harga = htmlspecialchars($data['harga']);
-    $query = "INSERT INTO book ('id', 'nama_buku', 'penulis', 'tahun_terbit', 'penerbit', 'deskripsi', 'harga') VALUES 
+    $query = "INSERT INTO 'book' ('id', 'nama_buku', 'penulis', 'tahun_terbit', 'penerbit', 'deskripsi', 'harga') VALUES 
         (null, '$gambar', '$nama', '$penulis', '$tahun', '$penerbit', '$deskripsi', '$harga')";
 
     mysqli_query($conn, $query);
